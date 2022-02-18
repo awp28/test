@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('covid_cases', function (Blueprint $table) {
             $table->id();
+            $table->date('report_date');
+            $table->integer('cases');
             $table->timestamps();
         });
     }
