@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\CovidCase;
+use App\Observers\CovidCaseObserver;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        JsonResource::withoutWrapping();    //  "data":  shu narsasiz chiqadi insomniyada
+        CovidCase::observe(CovidCaseObserver::class);
     }
 }
