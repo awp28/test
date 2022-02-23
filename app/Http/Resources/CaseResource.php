@@ -15,8 +15,9 @@ class CaseResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'cases' => $this->cases,
-            'report_date' => $this->report_date->format('m/d/Y')
+//            'report_date' => $this->report_date->format('m/d/Y')
         ];
     }
 }

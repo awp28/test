@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('covid_cases', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('report_date');
-            $table->integer('cases');
-            $table->smallInteger('votes')->nullable();
-            $table->boolean('status')->default(true);
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->text('body');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('covid_cases');
+        Schema::dropIfExists('posts');
     }
 };

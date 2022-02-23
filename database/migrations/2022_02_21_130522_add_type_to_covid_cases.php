@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('covid_cases', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->date('report_date');
-            $table->integer('cases');
-            $table->smallInteger('votes')->nullable();
-            $table->boolean('status')->default(true);
-            $table->timestamps();
+        Schema::table('covid_cases', function (Blueprint $table) {
+            $table->string('type')->nullable();
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('covid_cases');
+        Schema::table('covid_cases', function (Blueprint $table) {
+            $table->dropColumn('type');
+        });
     }
 };

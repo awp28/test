@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('cases', [\App\Http\Controllers\Api\CaseController::class, 'index']);
+Route::view('/pages', 'child');
+
+
+
